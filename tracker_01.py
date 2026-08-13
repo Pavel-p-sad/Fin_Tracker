@@ -8,7 +8,7 @@ def save_data(per):
     with open("data.json", "w", encoding="utf-8") as file: 
      json.dump(per, file, ensure_ascii=False, indent=4)
 
-def iron():
+def iron(): 
     print(f" Твоя цель {sp[0]['цель']} руб. \n")
     print(f" Накоплено уже : {sp[1]['всего']} руб. \n")
     ost = int(sp[0]['цель'] - sp[1]['всего'])
@@ -17,7 +17,7 @@ def iron():
     print(f" Прогресс {prog} % \n\n")
     show_menu()
 
-def get_yes_no (qwes):   
+def get_yes_no (qwes):                                                            # Обрабатываю ответы 
     while True:
         q1 = input(qwes)
         if q1 == 'Y' or q1 == 'y' or q1 == 'н' or q1 == 'Н' :
@@ -50,18 +50,18 @@ def reset():
 sp = [{"цель": "0", },
       {"всего": "0",},
       {"история": "[]"}]
-if os.path.exists("data.json"):   # data - название файла с данными (проверили что файл существует)   
-    with open ("data.json", "r", encoding="utf-8" ) as file: # открыли файл так как он существует
-        sp = json.load(file)  # загрузили данные из файла в список словарей sp (теперь он не 0 )
+if os.path.exists("data.json"):                                                # data - название файла с данными (проверили что файл существует)   
+    with open ("data.json", "r", encoding="utf-8" ) as file:                   # открыли файл так как он существует
+        sp = json.load(file)                                                   # загрузили данные из файла в список словарей sp (теперь он не 0 )
 else:
     while True:
         try:
-            sp[0]["цель"] = int(input("Ваша цель:  (руб.)")) # так как файла не существовало, меняю список н азначение цели
+            sp[0]["цель"] = int(input("Ваша цель:  (руб.)"))                   # так как файла не существовало, меняю список н азначение цели
             break
         except ValueError:
             print("Пожалуйста введите числовое значение")
-    with open("data.json", "w", encoding="utf-8") as file: # создаю файл так как его еще не существовало
-     json.dump(sp, file, ensure_ascii=False, indent=4)     # загружаю измененный список с целью в файл, только что созданный
+    with open("data.json", "w", encoding="utf-8") as file:                     # создаю файл так как его еще не существовало
+     json.dump(sp, file, ensure_ascii=False, indent=4)                         # загружаю измененный список с целью в файл, только что созданный
 
 print('                       ДОБРО ПОЖАЛОВАТЬ !!!             \n')
 print(f"  Ваша цель: {sp[0]['цель']} руб.",end="                           "),  print(f'DATE:  ')
